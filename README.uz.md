@@ -55,7 +55,7 @@ kerakli joyda kerakli rezistorlar va faqat bir tomonga kiradigan ulagichlar.
 | H1 – H4 | 4 | M3 vint + stoyka | Ixtiyoriy — korpusga mahkamlash uchun |
 
 To'liq ro'yxat, LCSC buyurtma kodlari bilan:
-[`production/v2-revB/bom.csv`](production/v2-revB/bom.csv).
+[`campv2/production/bom.csv`](campv2/production/bom.csv).
 
 ### Plataga ulanadigan modullar
 
@@ -130,7 +130,7 @@ har bir rang kanaliga bittadan: LED1 uchun R4/R5/R6, LED2 uchun R7/R8/R9.
 ![CAMP v2 platasining to'liq prinsipial sxemasi](docs/images/schematic.png)
 
 Yuqori sifatli vektor varianti: [`docs/images/schematic.svg`](docs/images/schematic.svg).
-KiCad manbasi: [`hardware/campv2/campv2.kicad_sch`](hardware/campv2/campv2.kicad_sch).
+KiCad manbasi: [`campv2/campv2.kicad_sch`](campv2/campv2.kicad_sch).
 
 Chizma ataylab nomlangan bloklarga bo'lingan — *Buttons* (tugmalar), *Temp & Humid*
 (harorat va namlik), *Gas* (gaz), *Screen* (ekran), *Mounting holes* (mahkamlash
@@ -173,7 +173,7 @@ plata chetiga qaragan bo'lsin (trafaretda ko'rsatilgan).
 
 ## Dasturni yuklash
 
-Dastur fayli: [`firmware/CubeSat/CubeSat.ino`](firmware/CubeSat/CubeSat.ino).
+Dastur fayli: [`campv2/firmware/CubeSat/CubeSat.ino`](campv2/firmware/CubeSat/CubeSat.ino).
 
 1. Arduino IDE'ni o'rnating.
 2. **Tools → Manage Libraries…** orqali uchta kutubxonani o'rnating:
@@ -181,7 +181,7 @@ Dastur fayli: [`firmware/CubeSat/CubeSat.ino`](firmware/CubeSat/CubeSat.ino).
    - `DHT sensor library` — muallif Adafruit
    - `Adafruit Unified Sensor` — muallif Adafruit
    *(Sinfxonada internet yo'qmi? Ishlashi tekshirilgan nusxalari
-   [`firmware/libraries/`](firmware/libraries/) papkasida turibdi — o'sha yerdagi
+   [`Arduino/libraries/`](Arduino/libraries/) papkasida turibdi — o'sha yerdagi
    README'ni o'qing.)*
 3. **Tools → Board → Arduino Nano**, **Tools → Processor → ATmega328P**.
    Agar yuklashda `avrdude: stk500_recv()` xatosi chiqsa, protsessorni
@@ -290,32 +290,35 @@ camp/
 ├── README.uz.md                 ← siz shu yerdasiz (o'zbekcha)
 ├── CHANGELOG.md                 ← versiyalar o'rtasidagi farqlar
 │
-├── hardware/
-│   └── campv2/                  ← PLATA. KiCad 10 loyihasi, rev B, ishlab chiqarishga tayyor
-│       ├── campv2.kicad_pro     ·  shu faylni oching
-│       ├── campv2.kicad_sch     ·  prinsipial sxema
-│       ├── campv2.kicad_pcb     ·  topologiya
-│       ├── fp-lib-table         ·  ../../libraries ga ishora qiladi (loyihaga nisbatan)
-│       └── sym-lib-table
-│
-├── firmware/
-│   ├── CubeSat/CubeSat.ino      ← DASTUR. Arduino IDE'da shuni oching
-│   └── libraries/               ← uchta Arduino kutubxonasining oflayn nusxasi
-│
-├── libraries/                   ← umumiy KiCad kutubxonalari
-│   ├── lcsc/                    ·  LCSC'dan olingan belgilar va posadka joylari
-│   ├── logos.pretty/            ·  orqa tomonga bosilgan ikkita logotip
-│   └── 3d/                      ·  3D ko'rish uchun STEP modellar
-│
-├── production/
-│   └── v2-revB/                 ← ZAVODGA BERILADIGAN FAYLLAR. Qo'lda tahrirlamang
-│       ├── gerbers/…zip         ·  shu faylni JLCPCB / PCBWay ga o'zgartirmasdan yuklang
+├── campv2/                      ← PLATA va unga tegishli hamma narsa
+│   ├── campv2.kicad_pro         ·  KiCad'da shu faylni oching
+│   ├── campv2.kicad_sch         ·  prinsipial sxema
+│   ├── campv2.kicad_pcb         ·  topologiya
+│   ├── fp-lib-table             ·  ../lib ga ishora qiladi (loyihaga nisbatan)
+│   ├── sym-lib-table
+│   │
+│   ├── firmware/
+│   │   └── CubeSat/CubeSat.ino  ← DASTUR. Arduino IDE'da shuni oching
+│   │
+│   └── production/              ← ZAVODGA BERILADIGAN FAYLLAR. Qo'lda tahrirlamang
+│       ├── …PCB_B.zip           ·  JLCPCB / PCBWay ga o'zgartirmasdan yuklang
 │       ├── bom.csv              ·  LCSC kodlari bilan detallar ro'yxati
 │       ├── positions.csv        ·  detallarning koordinatalari
 │       ├── designators.csv
-│       ├── netlist.ipc          ·  zavodning elektr sinovi uchun
-│       ├── *.pdf                ·  tekshirish uchun mis qatlam va kontur chizmalari
-│       └── 3d.step              ·  yig'ilgan plataning 3D modeli
+│       └── netlist.ipc          ·  zavodning elektr sinovi uchun
+│
+├── lib/                         ← umumiy KiCad kutubxonalari
+│   ├── lcsc/                    ·  LCSC'dan olingan belgilar va posadka joylari
+│   └── 3d/                      ·  3D ko'rish uchun STEP modellar
+│
+├── production/                  ← logotiplar va tekshiruv chizmalari. Zavod
+│   ├── turin_logo2.kicad_mod    ·  fayllari emas — ular campv2/production/ da
+│   ├── assotsiatsiya_logo…      ·  orqa tomonga bosilgan ikkita logotip
+│   ├── logo*.kicad_mod          ·  ularning oldingi variantlari
+│   ├── campv2-*.pdf             ·  mis qatlam va kontur chizmalari
+│   └── 3d.step                  ·  yig'ilgan plataning 3D modeli
+│
+├── Arduino/libraries/           ← uchta Arduino kutubxonasining oflayn nusxasi
 │
 ├── docs/
 │   ├── hardware-reference.md    ← muhandislar uchun: tugunlar, qoidalar, o'zgartirish
@@ -323,20 +326,23 @@ camp/
 │   ├── troubleshooting.md
 │   └── images/                  ← hujjatlardagi barcha rasmlar
 │
-├── tools/
-│   ├── lcsc.py                  ← LCSC kodidan KiCad belgisi + posadka + 3D modelini oladi
-│   └── lcsc.txt                 ← loyihada ishlatilgan LCSC kodlari
+├── lcsc.py, lcsc.txt            ← LCSC kodidan KiCad detalini yuklab oladi
 │
 └── archive/                     ← ESKI ISHLAR. Joriy platada ishlatilmaydi
-    ├── v1-camp/                 ·  rev A, eskirgan
-    ├── demo/                    ·  bitta svetodiodli kichik o'quv platasi
-    └── logo-iterations/         ·  logotiplarning oldingi variantlari
+    ├── camp/                    ·  rev A, eskirgan
+    ├── camp_demo/               ·  bitta svetodiodli kichik o'quv platasi
+    └── camp_t9/                 ·  bo'sh loyiha qoldig'i
 ```
 
-**Qoida:** talaba bo'lsangiz, sizga `firmware/`, `docs/` va shu fayl kerak.
-KiCad ochsangiz — `hardware/` va `libraries/`.
-Plata buyurtma qilsangiz — `production/`.
-`archive/` hech kimga kerak emas.
+**Qoida:** joriy plataga kerak bo'lgan hamma narsa `campv2/` ichida — sxema,
+topologiya, dastur va zavod fayllari, bitta papkada. `lib/` — KiCad orqa fonda
+yuklaydigan narsa. `docs/` — siz uchun. `archive/` hech kimga kerak emas.
+
+> ⚠️ **`production` nomli ikkita papka bor va ular bir xil emas.**
+> `campv2/production/` — zavodga yuboriladigan fayllar: gerberlar, BOM va
+> detallar koordinatalari. Yuqoridagi `production/` esa logotiplar va tekshiruv
+> chizmalarini saqlaydi. "Zavod fayllarini yubor" deganda `campv2/production/`
+> ichidagi zip fayli nazarda tutiladi.
 
 ---
 
@@ -350,7 +356,7 @@ git clone https://github.com/notazizelse/camp.git
 cd camp
 ```
 
-Keyin `hardware/campv2/campv2.kicad_pro` faylini oching. Boshqa hech narsa qilish shart
+Keyin `campv2/campv2.kicad_pro` faylini oching. Boshqa hech narsa qilish shart
 emas: yo'llarni sozlash, muhit o'zgaruvchilarini kiritish yoki kutubxona o'rnatish kerak
 emas.
 
@@ -367,7 +373,7 @@ qo'ymasdan, iltimos, issue oching: shunda keyingi odam bu muammoga duch kelmaydi
 
 ## Platani ishlab chiqarishga berish
 
-`production/v2-revB/gerbers/TechnoCamp_Circuitry_Class_PCB_B.zip` faylini ochmasdan,
+`campv2/production/TechnoCamp_Circuitry_Class_PCB_B.zip` faylini ochmasdan,
 o'zgartirmasdan istalgan plata zavodiga yuklang va standart sozlamalarni qoldiring:
 
 | Parametr | Qiymat |
@@ -390,7 +396,10 @@ Platada **old tomonda +5 V, orqa tomonda GND mis maydoni** quyilgan. Shu sababli
 detal ikkala shinaga ham qisqa yo'l bilan ulanadi va bitta ham quvvat yo'li tortishga
 hojat qolmaydi — plataning orqa tomoni deyarli bo'sh ko'rinishining sababi ham shu.
 
-![Plataning orqa tomoni](docs/images/pcb-bottom.png)
+![Plataning orqa tomoni, yuqorisida PER ASPERA AD ASTRA yozuvi](docs/images/pcb-bottom.png)
+
+Plataning orqa tomonida, mahkamlash teshiklaridan yuqorida
+**PER ASPERA AD ASTRA** yozuvi bor — *qiyinchiliklar orqali yulduzlarga.*
 
 ---
 

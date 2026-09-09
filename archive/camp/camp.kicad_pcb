@@ -1286,7 +1286,7 @@
 				(xyz 0 0 0)
 			)
 		)
-		(model "${THREED}/arduino nano.STEP"
+		(model "${KIPRJMOD}/../../lib/3d/arduino nano.STEP"
 			(offset
 				(xyz 0 0 8)
 			)
@@ -1608,7 +1608,7 @@
 				(xyz 0 0 270)
 			)
 		)
-		(model "${THREED}/button 6x6.step"
+		(model "${KIPRJMOD}/../../lib/3d/button 6x6.step"
 			(offset
 				(xyz -3 -3 1)
 			)
@@ -2381,7 +2381,7 @@
 				(xyz 0 0 270)
 			)
 		)
-		(model "${THREED}/button 6x6.step"
+		(model "${KIPRJMOD}/../../lib/3d/button 6x6.step"
 			(offset
 				(xyz -3 -3 1)
 			)
@@ -3729,7 +3729,7 @@
 			(uuid "02106677-0fa1-4dc1-8126-c41e8db330c5")
 		)
 		(embedded_fonts no)
-		(model "${THREED}/button 6x6.step"
+		(model "${KIPRJMOD}/../../lib/3d/button 6x6.step"
 			(offset
 				(xyz -3 -3 1)
 			)

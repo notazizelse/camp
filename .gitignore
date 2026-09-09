@@ -53,6 +53,9 @@ fp-info-cache
 build/
 .build/
 
+# Downloaded copies of files that already live in docs/images/.
+Claude outputs/
+
 # ─── Editors and operating systems ────────────────────────────────────────────
 .vscode/
 .idea/

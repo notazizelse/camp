@@ -778,7 +778,7 @@
 				(xyz 0 0 0)
 			)
 		)
-		(model "${THREED}/KY-015.step"
+		(model "${KIPRJMOD}/../lib/3d/KY-015.step"
 			(offset
 				(xyz 35 7.5 -9.5)
 			)
@@ -1090,7 +1090,7 @@
 				(xyz 0 0 0)
 			)
 		)
-		(model "${THREED}/MQ 7 Sensor.stp"
+		(model "${KIPRJMOD}/../lib/3d/MQ 7 Sensor.stp"
 			(offset
 				(xyz -18 -4 7)
 			)
@@ -1916,7 +1916,7 @@
 			(uuid "a5de4fcf-8ed2-425d-9cf2-8e0b12a7d4a7")
 		)
 		(embedded_fonts no)
-		(model "${CAMP_ROOT}/lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
+		(model "${KIPRJMOD}/../lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3251,7 +3251,7 @@
 			(uuid "8b53bbc7-0655-43a6-b69e-4b84216ac6a0")
 		)
 		(embedded_fonts no)
-		(model "${CAMP_ROOT}/lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
+		(model "${KIPRJMOD}/../lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4395,7 +4395,7 @@
 			(uuid "6de12d88-27aa-4127-9da4-3df1651ac9d0")
 		)
 		(embedded_fonts no)
-		(model "${CAMP_ROOT}/lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
+		(model "${KIPRJMOD}/../lib/lcsc/easyeda2kicad.3dshapes/SW-TH_4P-L6.0-W6.0-H5.0-LS6.5-P4.50.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5042,7 +5042,7 @@
 				(xyz 0 0 0)
 			)
 		)
-		(model "${THREED}/arduino nano.STEP"
+		(model "${KIPRJMOD}/../lib/3d/arduino nano.STEP"
 			(offset
 				(xyz 0 0 4)
 			)
@@ -11308,7 +11308,7 @@
 			(uuid "edce69ef-6086-4fb8-9704-4a52fae3ff00")
 		)
 		(embedded_fonts no)
-		(model "${THREED}/Screw Terminal Block 5mm 2-way.step"
+		(model "${KIPRJMOD}/../lib/3d/Screw Terminal Block 5mm 2-way.step"
 			(offset
 				(xyz 0 0 0)
 			)

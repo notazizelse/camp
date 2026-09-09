@@ -54,7 +54,7 @@ places, and connectors that only fit one way.
 | H1 – H4 | 4 | M3 screw + standoff | Optional, for mounting into a frame |
 
 The full machine-readable list, with LCSC order codes, is in
-[`production/v2-revB/bom.csv`](production/v2-revB/bom.csv).
+[`campv2/production/bom.csv`](campv2/production/bom.csv).
 
 ### Modules that plug into the board
 
@@ -128,7 +128,7 @@ colour channel: R4/R5/R6 for LED1, R7/R8/R9 for LED2.
 ![Full schematic of the CAMP v2 board](docs/images/schematic.png)
 
 Higher-resolution vector version: [`docs/images/schematic.svg`](docs/images/schematic.svg).
-The KiCad source is [`hardware/campv2/campv2.kicad_sch`](hardware/campv2/campv2.kicad_sch).
+The KiCad source is [`campv2/campv2.kicad_sch`](campv2/campv2.kicad_sch).
 
 The drawing is deliberately split into labelled boxes — *Buttons*, *Temp & Humid*,
 *Gas*, *Screen*, *Mounting holes*, and the two LED blocks — so you can read one idea at a
@@ -167,7 +167,7 @@ the USB connector facing the edge of the board (the silkscreen shows you where).
 
 ## Flash it
 
-The sketch is [`firmware/CubeSat/CubeSat.ino`](firmware/CubeSat/CubeSat.ino).
+The sketch is [`campv2/firmware/CubeSat/CubeSat.ino`](campv2/firmware/CubeSat/CubeSat.ino).
 
 1. Install the Arduino IDE.
 2. Install three libraries via **Tools → Manage Libraries…**
@@ -175,7 +175,7 @@ The sketch is [`firmware/CubeSat/CubeSat.ino`](firmware/CubeSat/CubeSat.ino).
    - `DHT sensor library` by Adafruit
    - `Adafruit Unified Sensor` by Adafruit
    *(No internet in the classroom? Known-good copies are vendored in
-   [`firmware/libraries/`](firmware/libraries/) — see the README there.)*
+   [`Arduino/libraries/`](Arduino/libraries/) — see the README there.)*
 3. **Tools → Board → Arduino Nano**, **Tools → Processor → ATmega328P**.
    If uploading fails with a `avrdude: stk500_recv()` error, switch the processor to
    **ATmega328P (Old Bootloader)**. Most cheap Nano clones need this.
@@ -279,32 +279,35 @@ camp/
 ├── README.uz.md                 ← same thing, in Uzbek
 ├── CHANGELOG.md                 ← what changed between board revisions
 │
-├── hardware/
-│   └── campv2/                  ← THE BOARD. KiCad 10 project, rev B, production-ready
-│       ├── campv2.kicad_pro     ·  open this one
-│       ├── campv2.kicad_sch     ·  schematic
-│       ├── campv2.kicad_pcb     ·  layout
-│       ├── fp-lib-table         ·  points at ../../libraries (project-relative)
-│       └── sym-lib-table
-│
-├── firmware/
-│   ├── CubeSat/CubeSat.ino      ← THE CODE. Open this in the Arduino IDE
-│   └── libraries/               ← offline copies of the three Arduino libraries
-│
-├── libraries/                   ← shared KiCad libraries, used by every board here
-│   ├── lcsc/                    ·  symbols + footprints pulled from LCSC
-│   ├── logos.pretty/            ·  the two logo footprints printed on the back
-│   └── 3d/                      ·  STEP models for the 3D viewer
-│
-├── production/
-│   └── v2-revB/                 ← WHAT THE FACTORY GETS. Do not edit by hand
-│       ├── gerbers/…zip         ·  upload this file to JLCPCB / PCBWay as-is
+├── campv2/                      ← THE BOARD, and everything that belongs to it
+│   ├── campv2.kicad_pro         ·  open this one in KiCad
+│   ├── campv2.kicad_sch         ·  schematic
+│   ├── campv2.kicad_pcb         ·  layout
+│   ├── fp-lib-table             ·  points at ../lib (project-relative)
+│   ├── sym-lib-table
+│   │
+│   ├── firmware/
+│   │   └── CubeSat/CubeSat.ino  ← THE CODE. Open this in the Arduino IDE
+│   │
+│   └── production/              ← WHAT THE FACTORY GETS. Do not edit by hand
+│       ├── …PCB_B.zip           ·  upload this file to JLCPCB / PCBWay as-is
 │       ├── bom.csv              ·  parts list with LCSC codes
 │       ├── positions.csv        ·  pick-and-place positions
 │       ├── designators.csv
-│       ├── netlist.ipc          ·  for the fab's electrical test
-│       ├── *.pdf                ·  copper and outline plots, for checking
-│       └── 3d.step              ·  the assembled board, for mechanical fit
+│       └── netlist.ipc          ·  for the fab's electrical test
+│
+├── lib/                         ← shared KiCad libraries
+│   ├── lcsc/                    ·  symbols + footprints pulled from LCSC
+│   └── 3d/                      ·  STEP models for the 3D viewer
+│
+├── production/                  ← artwork and reference plots. NOT the fab
+│   ├── turin_logo2.kicad_mod    ·  package — that is in campv2/production/
+│   ├── assotsiatsiya_logo…      ·  the two logos printed on the back
+│   ├── logo*.kicad_mod          ·  earlier versions of them
+│   ├── campv2-*.pdf             ·  copper and outline plots, for checking
+│   └── 3d.step                  ·  the assembled board, for mechanical fit
+│
+├── Arduino/libraries/           ← offline copies of the three Arduino libraries
 │
 ├── docs/
 │   ├── hardware-reference.md    ← for engineers: nets, design rules, how to modify
@@ -312,20 +315,23 @@ camp/
 │   ├── troubleshooting.md
 │   └── images/                  ← every picture used in these documents
 │
-├── tools/
-│   ├── lcsc.py                  ← pulls a KiCad symbol+footprint+3D model from an LCSC code
-│   └── lcsc.txt                 ← the LCSC codes this project uses
+├── lcsc.py, lcsc.txt            ← pulls a KiCad part from an LCSC order code
 │
 └── archive/                     ← OLD WORK. Nothing here is used by the current board
-    ├── v1-camp/                 ·  rev A, superseded
-    ├── demo/                    ·  a tiny one-LED teaching board
-    └── logo-iterations/         ·  earlier versions of the silkscreen logos
+    ├── camp/                    ·  rev A, superseded
+    ├── camp_demo/               ·  a tiny one-LED teaching board
+    └── camp_t9/                 ·  an empty project stub
 ```
 
-**The rule:** if you are a student, you need `firmware/`, `docs/` and this file.
-If you are opening KiCad, you need `hardware/` and `libraries/`.
-If you are ordering boards, you need `production/`.
-Nobody needs `archive/`.
+**The rule:** everything the current board needs is inside `campv2/` — schematic,
+layout, sketch and fab package, one folder. `lib/` is what KiCad loads behind the
+scenes. `docs/` is for you. Nobody needs `archive/`.
+
+> ⚠️ **Two folders are called `production`, and they are not the same thing.**
+> `campv2/production/` is the fab package — the gerbers, BOM and pick-and-place
+> file you send to the factory. The top-level `production/` holds the logo
+> footprints and reference plots. "Send them the production files" means the zip
+> in `campv2/production/`.
 
 ---
 
@@ -339,7 +345,7 @@ git clone https://github.com/notazizelse/camp.git
 cd camp
 ```
 
-Then open `hardware/campv2/campv2.kicad_pro`. That is all. There is no "configure paths"
+Then open `campv2/campv2.kicad_pro`. That is all. There is no "configure paths"
 step, no environment variables to set, and no libraries to install:
 
 - The symbol and footprint libraries are found through `${KIPRJMOD}`, KiCad's built-in
@@ -354,7 +360,7 @@ please open an issue rather than fixing it locally, so the next person does not 
 
 ## Getting the board made
 
-Upload `production/v2-revB/gerbers/TechnoCamp_Circuitry_Class_PCB_B.zip` to any PCB house
+Upload `campv2/production/TechnoCamp_Circuitry_Class_PCB_B.zip` to any PCB house
 without unzipping it, and take the defaults:
 
 | Setting | Value |
@@ -376,7 +382,10 @@ The board has a **+5 V pour on the front and a GND pour on the back**. That give
 part a low-impedance path to both rails without routing a single power track, and it is
 why the back of the board looks almost empty.
 
-![The back of the board](docs/images/pcb-bottom.png)
+![The back of the board, with PER ASPERA AD ASTRA across the top](docs/images/pcb-bottom.png)
+
+Across the top of the back, above the mounting holes, the board carries
+**PER ASPERA AD ASTRA** — *through hardships, to the stars.*
 
 ---
 
