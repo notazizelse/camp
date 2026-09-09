@@ -1,0 +1,64 @@
+# ─── KiCad ────────────────────────────────────────────────────────────────────
+# Per-user editor state: which layers are visible, where the window was, the
+# last zoom level. Changes constantly, means nothing to anyone else.
+*.kicad_prl
+
+# Lock files, written while a project is open and deleted on close.
+*.lck
+~*.lck
+
+# KiCad's own automatic backups.
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_pro-bak
+*.kicad_sym-bak
+_autosave-*
+*_autosave*
+_restore_backup*/
+
+# Editor / plugin history sidecars (the VS Code Local History extension and the
+# KiCad history plugin both write these). They can reach thousands of files.
+.history/
+.backups/
+
+# Netlist and report files regenerated on demand.
+*.net
+*.xml
+fp-info-cache
+*-erc.rpt
+*-drc.rpt
+
+# ─── Generated production output ──────────────────────────────────────────────
+# Everything in production/ that is CHECKED IN is deliberate and belongs to a
+# specific released revision. Loose plots dropped anywhere else do not.
+/gerbers/
+*.gbr
+*.gbl
+*.gtl
+*.gbs
+*.gts
+*.gbo
+*.gto
+*.gbp
+*.gtp
+*.gm1
+*.drl
+!production/**/*.zip
+
+# ─── Arduino ──────────────────────────────────────────────────────────────────
+*.o
+*.elf
+*.hex
+build/
+.build/
+
+# ─── Editors and operating systems ────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+.localized
+Thumbs.db
+desktop.ini
+*~
+*.swp

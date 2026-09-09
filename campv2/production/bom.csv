@@ -1,0 +1,10 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+ARDUINO1,Arduino_Nano,1,Arduino_Nano,
+DHT11,PinHeader_1x03_P2.54mm_Vertical,1,DHT11,
+J5,PinHeader_1x03_P2.54mm_Vertical,1,LED_SEL,
+LCD,PinHeader_1x04_P2.54mm_Vertical,1,LCD,
+"LED1, LED2",PinSocket_1x04_P2.54mm_Vertical,2,TJ-L5FCMXHTCSLCRGB-A5,C2837020
+MQ-7,PinHeader_1x04_P2.54mm_Vertical,1,MQ-7,
+"R4, R5, R6, R7, R8, R9",R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,6,220,
+"SW1, SW2, SW3",SW-TH_4P-L6.0-W6.0-P4.50-LS6.5,3,button,C2837515
+U1,CONN-TH_DEGSON_DG301-5.0-02P,1,screw terminal,C5371917
